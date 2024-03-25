@@ -12,15 +12,17 @@ import java.util.List;
 import java.util.Scanner;
 
 public class OrderManagementController {
-    private final OrderManagementService orderService;
-    private final Scanner scanner;
-
-    public OrderManagementController(OrderManagementService orderService, Scanner scanner) {
-        this.orderService = orderService;
-        this.scanner = scanner;
+	
+    private static OrderManagementService orderService = null;
+//  private static Scanner scanner = null;
+    static Scanner scanner = new Scanner(System.in);
+    public OrderManagementController(OrderManagementService orderService) {
+        OrderManagementController.orderService = orderService;
+        
     }
-
-    public void run() {
+  
+    public static void main(String[] args) {
+    	Scanner scanner = new Scanner(System.in);
         boolean exit = false;
         while (!exit) {
             System.out.println("1. Create User");
@@ -31,9 +33,8 @@ public class OrderManagementController {
             System.out.println("6. Get Orders By User");
             System.out.println("7. Exit");
             System.out.println("Enter your choice:");
-
             int choice = scanner.nextInt();
-            scanner.nextLine(); 
+             
             switch (choice) {
                 case 1:
                     createUser();
@@ -61,11 +62,11 @@ public class OrderManagementController {
             }
         }
     }
-
-    private void createUser() {
+    
+      static void createUser() {
         System.out.println("Enter user ID:");
         int userId = scanner.nextInt();
-        scanner.nextLine(); 
+       
         System.out.println("Enter username:");
         String username = scanner.nextLine();
         System.out.println("Enter password:");
@@ -78,14 +79,14 @@ public class OrderManagementController {
         System.out.println("User created successfully.");
     }
 
-    private void createProduct() {
+      static void createProduct() {
         System.out.println("Enter product name:");
         String productName = scanner.nextLine();
         System.out.println("Enter description:");
         String description = scanner.nextLine();
         System.out.println("Enter price:");
         double price = scanner.nextDouble();
-        scanner.nextLine();
+       
         System.out.println("Enter quantity in stock:");
         int quantityInStock = scanner.nextInt();
         scanner.nextLine(); 
@@ -97,10 +98,10 @@ public class OrderManagementController {
         System.out.println("Product created successfully.");
     }
 
-    private void createOrder() {
+      static void createOrder() {
         System.out.println("Enter user ID:");
         int userId = scanner.nextInt();
-        scanner.nextLine(); 
+         
         User user = new User(); 
         System.out.println("Enter number of products:");
         int numProducts = scanner.nextInt();
@@ -122,7 +123,7 @@ public class OrderManagementController {
         }
     }
 
-    private void cancelOrder() {
+      static void cancelOrder() {
         System.out.println("Enter user ID:");
         int userId = scanner.nextInt();
         System.out.println("Enter order ID:");
@@ -136,7 +137,7 @@ public class OrderManagementController {
         }
     }
 
-    private void getAllProducts() {
+      static void getAllProducts() {
         List<Product> products = orderService.getAllProducts();
         if (products.isEmpty()) {
             System.out.println("No products found.");
@@ -148,7 +149,7 @@ public class OrderManagementController {
         }
     }
 
-    private void getOrdersByUser() {
+      static void getOrdersByUser() {
         System.out.println("Enter user ID:");
         int userId = scanner.nextInt();
         scanner.nextLine();
@@ -162,6 +163,7 @@ public class OrderManagementController {
                 System.out.println(order);
             }
         }
+ 
     }
-
+    
 }
