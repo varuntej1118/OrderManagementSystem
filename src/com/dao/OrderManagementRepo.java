@@ -13,6 +13,7 @@ public interface OrderManagementRepo {
     void cancelOrder(int userId, int orderId) throws SQLException, OrderNotFoundException;
     void createProduct(User user, Product product) throws SQLException;
     void createUser(User user) throws SQLException;
+    void getUserById(int userId) throws SQLException;
     List<Product> getAllProducts() throws SQLException;
     List<Product> getOrderByUser(User user) throws SQLException;
 }

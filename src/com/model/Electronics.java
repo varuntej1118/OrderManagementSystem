@@ -10,8 +10,8 @@ public class Electronics extends Product {
 
     public Electronics(int productId, String productName, String description, double price, int quantityInStock, String type, String brand, int warrantyPeriod) {
         super(productId, productName, description, price, quantityInStock, type);
-        this.setBrand(brand);
-        this.setWarrantyPeriod(warrantyPeriod);
+        this.brand = brand;
+        this.warrantyPeriod = warrantyPeriod;
     }
     
     // Getters and Setters

@@ -11,8 +11,8 @@ public class Clothing extends Product {
 
     public Clothing(int productId, String productName, String description, double price, int quantityInStock, String type, String size, String color) {
         super(productId, productName, description, price, quantityInStock, type);
-        this.setSize(size);
-        this.setColor(color);
+        this.size = size;
+        this.color = color;
     }
     // Getters and Setters
 

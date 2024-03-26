@@ -2,19 +2,19 @@ package com.model;
 
 public class User {
     private int userId;
-    private String username;
+    private String userName;
     private String password;
-    private String role; // "Admin" or "User"
+    private String role;
 
     // Constructors
     public User() {
     }
 
-    public User(int userId, String username, String password, String role) {
-        this.setUserId(userId);
-        this.setUsername(username);
-        this.setPassword(password);
-        this.setRole(role);
+    public User(int userId, String userName, String password, String role) {
+        this.userId = userId;
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
     }
     
     // Getters and Setters
@@ -28,12 +28,12 @@ public class User {
 		this.userId = userId;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public String getPassword() {

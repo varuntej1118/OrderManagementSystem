@@ -13,12 +13,12 @@ public class Product {
     }
 
     public Product(int productId, String productName, String description, double price, int quantityInStock, String type) {
-        this.setProductId(productId);
-        this.setProductName(productName);
-        this.setDescription(description);
-        this.setPrice(price);
-        this.setQuantityInStock(quantityInStock);
-        this.setType(type);
+        this.productId = productId;
+        this.productName = productName;
+        this.description = description;
+        this.price = price;
+        this.quantityInStock = quantityInStock;
+        this.type = type;
     }
 
 	public int getProductId() {
@@ -68,6 +68,8 @@ public class Product {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	
 }
   
     

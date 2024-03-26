@@ -5,6 +5,7 @@ import com.model.User;
 import com.exception.OrderNotFoundException;
 import com.exception.UserNotFoundException;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface OrderManagementService {
@@ -12,11 +13,15 @@ public interface OrderManagementService {
 
     void cancelOrder(int userId, int orderId) throws OrderNotFoundException;
 
-    void createProduct(User user, Product product);
+    void createProduct(User user, Product product) throws SQLException;
 
-    void createUser(User user);
+    void createUser(User user) throws SQLException;
 
-    List<Product> getAllProducts();
+    List<Product> getAllProducts() throws SQLException;
 
-    List<Product> getOrderByUser(User user);
+    List<Product> getOrderByUser(User user) throws SQLException;
+
+	void getUserById(int userId1) throws SQLException;
+
+	
 }

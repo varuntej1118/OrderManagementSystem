@@ -1,6 +1,7 @@
 package com.service;
 
 import com.dao.OrderManagementRepo;
+import com.dao.OrderProcessorImpl;
 import com.model.Product;
 import com.model.User;
 import com.exception.OrderNotFoundException;
@@ -9,26 +10,38 @@ import com.exception.UserNotFoundException;
 import java.sql.SQLException;
 import java.util.List;
 
-public class OrderManagementServiceImpl implements OrderManagementRepo {
-    private final OrderManagementRepo orderRepo;
+public class OrderManagementServiceImpl implements OrderManagementService {
+    OrderManagementRepo orderRepo = new OrderProcessorImpl() ;
 
-    public OrderManagementServiceImpl(OrderManagementRepo orderRepo) {
-        this.orderRepo = orderRepo;
+   
+    @Override
+    public void createOrder(User user, List<Product> products) throws UserNotFoundException {
+        try {
+			orderRepo.createOrder(user, products);
+		} catch (SQLException | UserNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @Override
-    public void createOrder(User user, List<Product> products) throws UserNotFoundException, SQLException {
-        orderRepo.createOrder(user, products);
+    public void cancelOrder(int userId, int orderId) throws OrderNotFoundException {
+        try {
+			orderRepo.cancelOrder(userId, orderId);
+		} catch (SQLException | OrderNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @Override
-    public void cancelOrder(int userId, int orderId) throws OrderNotFoundException, SQLException {
-        orderRepo.cancelOrder(userId, orderId);
-    }
-
-    @Override
-    public void createProduct(User user, Product product) throws SQLException {
-        orderRepo.createProduct(user, product);
+    public void createProduct(User user, Product product) throws SQLException{
+        try {
+			orderRepo.createProduct(user, product);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @Override
@@ -44,5 +57,8 @@ public class OrderManagementServiceImpl implements OrderManagementRepo {
     @Override
     public List<Product> getOrderByUser(User user) throws SQLException {
         return orderRepo.getOrderByUser(user);
+    }
+    public void getUserById(int userId) throws SQLException{
+    	 orderRepo.getUserById(userId);
     }
 }
