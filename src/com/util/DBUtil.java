@@ -9,7 +9,7 @@ public class DBUtil {
    
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/oms";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "Varunn@11";
+    private static final String PASSWORD = "Varun";
 
   
     public static Connection getDBConn() throws SQLException {
